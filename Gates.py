@@ -12,6 +12,10 @@ def mesure(Q):
     :param: Q le gubit (numpy array)
     :return: int la resultat de la mesure (0 ou 1)
     """
+    n = Q.shape[0]  # un qbit est une matrice colonne
 
-    return rand.choices([0, 1], [Q[0]**2, Q[1]**2])
+    R = range(n)
+    Prob = [Q[k, 0]**2 for k in range(n)]
+
+    return rand.choices(R, Prob)[0]  # un seul choix demandé
 
