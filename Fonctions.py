@@ -56,7 +56,7 @@ def produit_matriciel(A, B):
     nB, pB = np.shape(B)
 
     if nB != pA:
-        raise Error("Produit matriciel impossible")
+        raise Exception("Produit matriciel impossible")
 
     R = np.zeros((nA, pB))
 
