@@ -24,7 +24,7 @@ def supprime_element_list(list, element):
             break
 
 
-def fonction_constante_ou_balancee(n):
+def fonction_constante_ou_balancee(n, est_constante=False):
     """
     Creer une liste (représentant la fonction) de 2^n. La liste contient soit que des True ou des Faux (fonction constante)
     soit 2^{n-1} True et 2^{n-1} False
@@ -37,7 +37,7 @@ def fonction_constante_ou_balancee(n):
     # la liste resultat
     resultat = []
 
-    est_constante = rand.choice([True, False])  # choix entre constante ou balancé
+    est_constante = est_constante or rand.choice([True, False])  # choix entre constante ou balancé
 
     if est_constante:
         print("La fonction choisie est constante")
@@ -104,7 +104,7 @@ def determination_classique(f):
 for k in range(3):
     print("Essaie " + str(k))
 
-    n = 5
+    n = 4
     f = fonction_constante_ou_balancee(n)
     oracle = fonction_vers_oracle(f)
 
@@ -124,14 +124,14 @@ for k in range(3):
 
     Q0 = qbit_zero
     for k in range(n - 1):
-        Q0 = Fonc.produitKronecker(Q0, qbit_zero)
-    Q0 = Fonc.produitKronecker(Q0, qbit_un)
+        Q0 = Fonc.produit_kronecker(Q0, qbit_zero)
+    Q0 = Fonc.produit_kronecker(Q0, qbit_un)
 
     # Portes hadamard
 
     H = G.H
     for k in range(n):
-        H = Fonc.produitKronecker(H, G.H)
+        H = Fonc.produit_kronecker(H, G.H)
 
     Q1 = np.dot(H, Q0)
 
@@ -142,6 +142,8 @@ for k in range(3):
     # Portes hadamard fin
 
     Q3 = np.dot(H, Q2)
+
+    Fonc.plot_qubit(Q3)
 
     # print(Q0)
     # print(Q1)
