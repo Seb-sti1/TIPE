@@ -1,3 +1,5 @@
+# @author Seb-sti1
+
 import math as ma
 import random as rand
 import time as time

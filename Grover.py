@@ -1,3 +1,5 @@
+# @author qrop
+
 import numpy as np
 import math as ma
 import random as rd
